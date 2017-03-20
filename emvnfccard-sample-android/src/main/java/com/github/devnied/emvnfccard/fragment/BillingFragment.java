@@ -2,7 +2,6 @@ package com.github.devnied.emvnfccard.fragment;
 
 import java.util.ArrayList;
 
-import org.apache.commons.collections4.CollectionUtils;
 import org.json.JSONException;
 
 import android.app.ActionBar.LayoutParams;
@@ -125,7 +124,7 @@ public class BillingFragment extends Fragment implements OnClickListener {
 						Bundle ownedItems = mService.getPurchases(3, getActivity().getPackageName(), INAPP, null);
 						if (ownedItems.getInt(RESPONSE_CODE) == BILLING_RESPONSE_RESULT_OK) {
 							final ArrayList<String> owned = ownedItems.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
-							if (CollectionUtils.isNotEmpty(owned)) {
+							if (owned != null && !owned.isEmpty()) {
 								itemId.removeAll(owned);
 							}
 						}

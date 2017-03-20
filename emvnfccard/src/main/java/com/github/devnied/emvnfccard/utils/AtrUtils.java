@@ -22,11 +22,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Collection;
 
-import org.apache.commons.collections4.MultiMap;
-import org.apache.commons.collections4.map.MultiValueMap;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.CharEncoding;
 import org.apache.commons.lang3.StringUtils;
+import org.greenrobot.essentials.collections.Multimap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,7 +45,7 @@ public final class AtrUtils {
 	/**
 	 * MultiMap containing ATR
 	 */
-	private static final MultiMap<String, String> MAP = new MultiValueMap<String, String>();
+	private static final Multimap<String, String> MAP = Multimap.create();
 
 	static {
 		InputStream is = null;
@@ -66,7 +65,7 @@ public final class AtrUtils {
 				if (line.startsWith("#") || line.trim().length() == 0) { // comment ^#/ empty line ^$/
 					continue;
 				} else if (line.startsWith("\t") && currentATR != null) {
-					MAP.put(currentATR, line.replace("\t", "").trim());
+					MAP.putElement(currentATR, line.replace("\t", "").trim());
 				} else if (line.startsWith("3")) { // ATR hex
 					currentATR = StringUtils.deleteWhitespace(line.toUpperCase());
 				} else {
