@@ -22,7 +22,6 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -73,7 +72,7 @@ public final class TrackUtils {
 				// Read expire date
 				SimpleDateFormat sdf = new SimpleDateFormat("yyMM", Locale.getDefault());
 				try {
-					pEmvCard.setExpireDate(DateUtils.truncate(sdf.parse(m.group(2)), Calendar.MONTH));
+					pEmvCard.setExpireDate(CommonsUtils.truncate(sdf.parse(m.group(2)), Calendar.MONTH));
 				} catch (ParseException e) {
 					LOGGER.error("Unparsable expire card date : {}", e.getMessage());
 					return ret;

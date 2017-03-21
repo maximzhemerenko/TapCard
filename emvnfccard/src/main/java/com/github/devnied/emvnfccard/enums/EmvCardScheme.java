@@ -17,8 +17,6 @@ package com.github.devnied.emvnfccard.enums;
 
 import java.util.regex.Pattern;
 
-import org.apache.commons.lang3.StringUtils;
-
 import fr.devnied.bitlib.BytesUtils;
 
 /**
@@ -80,21 +78,21 @@ public enum EmvCardScheme {
 	/**
 	 * Constructor using fields
 	 * 
-	 * @param pAid
+	 * @param pAids
 	 *            Card AID or RID
 	 * @param pScheme
 	 *            scheme name
 	 * @param pRegex
 	 *            Card regex
 	 */
-	private EmvCardScheme(final String pScheme, final String pRegex, final String... pAids) {
+	EmvCardScheme(final String pScheme, final String pRegex, final String... pAids) {
 		aids = pAids;
 		aidsByte = new byte[pAids.length][];
 		for (int i = 0; i < aids.length; i++) {
 			aidsByte[i] = BytesUtils.fromString(pAids[i]);
 		}
 		name = pScheme;
-		if (StringUtils.isNotBlank(pRegex)) {
+		if (CommonsUtils.isNotBlank(pRegex)) {
 			pattern = Pattern.compile(pRegex);
 		} else {
 			pattern = null;
@@ -129,10 +127,10 @@ public enum EmvCardScheme {
 	public static EmvCardScheme getCardTypeByAid(final String pAid) {
 		EmvCardScheme ret = null;
 		if (pAid != null) {
-			String aid = StringUtils.deleteWhitespace(pAid);
+			String aid = CommonsUtils.deleteWhitespace(pAid);
 			for (EmvCardScheme val : EmvCardScheme.values()) {
 				for (String schemeAid : val.getAid()) {
-					if (aid.startsWith(StringUtils.deleteWhitespace(schemeAid))) {
+					if (aid.startsWith(CommonsUtils.deleteWhitespace(schemeAid))) {
 						ret = val;
 						break;
 					}
@@ -153,7 +151,7 @@ public enum EmvCardScheme {
 		EmvCardScheme ret = null;
 		if (pCardNumber != null) {
 			for (EmvCardScheme val : EmvCardScheme.values()) {
-				if (val.pattern != null && val.pattern.matcher(StringUtils.deleteWhitespace(pCardNumber)).matches()) {
+				if (val.pattern != null && val.pattern.matcher(CommonsUtils.deleteWhitespace(pCardNumber)).matches()) {
 					ret = val;
 					break;
 				}

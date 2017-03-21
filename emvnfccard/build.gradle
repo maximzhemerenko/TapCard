@@ -2,13 +2,13 @@ apply plugin: 'java'
 
 dependencies {
   compile 'com.github.devnied:bit-lib4j:1.4.12'
-  compile 'org.apache.commons:commons-lang3:3.1'
-  compile 'commons-io:commons-io:2.4'
   compile 'org.slf4j:slf4j-api:1.7.5'
   compile 'org.slf4j:slf4j-log4j12:1.7.5'
   compile 'log4j:log4j:1.2.17'
   compile 'org.greenrobot:essentials:3.0.0-RC1'
 
+  testCompile 'org.apache.commons:commons-lang3:3.1'
+  testCompile 'commons-io:commons-io:2.4'
   testCompile 'junit:junit:4.12'
   testCompile 'org.easytesting:fest-assert:1.4'
   testCompile 'org.powermock:powermock-module-junit4:1.7.0RC4'

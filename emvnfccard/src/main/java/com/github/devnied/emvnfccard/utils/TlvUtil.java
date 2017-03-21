@@ -22,9 +22,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
-
 import com.github.devnied.emvnfccard.enums.SwEnum;
 import com.github.devnied.emvnfccard.enums.TagValueTypeEnum;
 import com.github.devnied.emvnfccard.exception.TlvException;
@@ -360,7 +357,6 @@ public final class TlvUtil {
 	 *            data to parse
 	 * @param pTag
 	 *            tags to find
-	 * @param pAdd
 	 * @return the list of TLV
 	 */
 	public static List<TLV> getlistTLV(final byte[] pData, final ITag... pTag) {
@@ -372,7 +368,7 @@ public final class TlvUtil {
 		while (stream.available() > 0) {
 
 			TLV tlv = TlvUtil.getNextTLV(stream);
-			if (ArrayUtils.contains(pTag, tlv.getTag())) {
+			if (CommonsUtils.contains(pTag, tlv.getTag())) {
 				list.add(tlv);
 			} else if (tlv.getTag().isConstructed()) {
 				list.addAll(TlvUtil.getlistTLV(tlv.getValueBytes(), pTag));
@@ -401,7 +397,7 @@ public final class TlvUtil {
 			while (stream.available() > 0) {
 
 				TLV tlv = TlvUtil.getNextTLV(stream);
-				if (ArrayUtils.contains(pTag, tlv.getTag())) {
+				if (CommonsUtils.contains(pTag, tlv.getTag())) {
 					return tlv.getValueBytes();
 				} else if (tlv.getTag().isConstructed()) {
 					ret = TlvUtil.getValue(tlv.getValueBytes(), pTag);
@@ -478,7 +474,7 @@ public final class TlvUtil {
 	}
 
 	public static String getSpaces(final int length) {
-		return StringUtils.leftPad(StringUtils.EMPTY, length);
+		return CommonsUtils.leftPad("", length);
 	}
 
 	public static String prettyPrintHex(final String in, final int indent) {
@@ -562,5 +558,4 @@ public final class TlvUtil {
 	 */
 	private TlvUtil() {
 	}
-
 }

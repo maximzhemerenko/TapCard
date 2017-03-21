@@ -1,5 +1,6 @@
 package com.github.devnied.emvnfccard.fragment.viewPager.impl;
 
+import com.github.devnied.emvnfccard.CommonsUtils;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -132,18 +133,18 @@ public class CardDetailFragment extends AbstractFragment {
 				mExtendedLayout.removeAllViews();
 
 				// Card holder name
-				if (StringUtils.isNotBlank(mCard.getHolderFirstname()) && StringUtils.isNotBlank(mCard.getHolderLastname())) {
+				if (CommonsUtils.isNotBlank(mCard.getHolderFirstname()) && CommonsUtils.isNotBlank(mCard.getHolderLastname())) {
 					createRaw(getString(R.string.extended_card_holder_name),
 							StringUtils.join(mCard.getHolderFirstname(), " ", mCard.getHolderLastname()));
 				}
 
 				// card AID
-				if (StringUtils.isNotEmpty(mCard.getAid())) {
+				if (CommonsUtils.isNotEmpty(mCard.getAid())) {
 					createRaw(getString(R.string.extended_title_AID), CardUtils.formatAid(mCard.getAid()));
 				}
 
 				// Card Application label
-				if (StringUtils.isNotEmpty(mCard.getApplicationLabel())) {
+				if (CommonsUtils.isNotEmpty(mCard.getApplicationLabel())) {
 					createRaw(getString(R.string.extended_title_application_label), mCard.getApplicationLabel());
 				}
 

@@ -1,5 +1,6 @@
 package com.github.devnied.emvnfccard.activity;
 
+import com.github.devnied.emvnfccard.CommonsUtils;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -9,7 +10,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -52,6 +52,7 @@ import com.github.devnied.emvnfccard.model.enums.TransactionTypeEnum;
 import com.github.devnied.emvnfccard.parser.EmvParser;
 import com.github.devnied.emvnfccard.provider.Provider;
 import com.github.devnied.emvnfccard.utils.AtrUtils;
+import com.github.devnied.emvnfccard.utils.CommonsUtils;
 import com.github.devnied.emvnfccard.utils.ConstantUtils;
 import com.github.devnied.emvnfccard.utils.CroutonUtils;
 import com.github.devnied.emvnfccard.utils.CroutonUtils.CoutonColor;
@@ -338,7 +339,7 @@ public class HomeActivity extends FragmentActivity implements OnItemClickListene
 
 					if (!mException) {
 						if (mCard != null) {
-							if (StringUtils.isNotBlank(mCard.getCardNumber())) {
+							if (CommonsUtils.isNotBlank(mCard.getCardNumber())) {
 								CroutonUtils.display(HomeActivity.this, getText(R.string.card_read), CoutonColor.GREEN);
 								mReadCard = mCard;
 							} else if (mCard.isNfcLocked()) {
