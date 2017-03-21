@@ -17,9 +17,9 @@ package com.github.devnied.emvnfccard.parser.apdu.impl;
 
 import java.util.Date;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import com.github.devnied.emvnfccard.log.Logger;
+import com.github.devnied.emvnfccard.log.LoggerFactory;
 import com.github.devnied.emvnfccard.model.enums.IKeyEnum;
 import com.github.devnied.emvnfccard.parser.apdu.annotation.AnnotationData;
 import com.github.devnied.emvnfccard.utils.EnumUtils;
@@ -36,7 +36,7 @@ public final class DataFactory {
 	/**
 	 * Logger of this class
 	 */
-	public static final Logger LOGGER = LoggerFactory.getLogger(DataFactory.class.getName());
+	public static final Logger LOGGER = LoggerFactory.getLogger(DataFactory.class);
 
 	/**
 	 * Constant for EN1545-1 (Date format)

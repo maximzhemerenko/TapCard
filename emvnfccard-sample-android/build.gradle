@@ -32,6 +32,10 @@ dependencies {
   compile 'org.apache.commons:commons-lang3:3.1'
   compile 'commons-io:commons-io:2.4'
 
+  compile 'org.slf4j:slf4j-api:1.7.5'
+  compile 'org.slf4j:slf4j-log4j12:1.7.5'
+  compile 'log4j:log4j:1.2.17'
+
   compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
   compile('de.keyboardsurfer.android.widget:crouton:1.8.5@aar') {
     // exclusion is not necessary, but generally a good idea.

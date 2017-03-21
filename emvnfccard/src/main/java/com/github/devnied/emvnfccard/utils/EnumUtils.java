@@ -15,8 +15,8 @@
  */
 package com.github.devnied.emvnfccard.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.github.devnied.emvnfccard.log.Logger;
+import com.github.devnied.emvnfccard.log.LoggerFactory;
 
 import com.github.devnied.emvnfccard.model.enums.IKeyEnum;
 

@@ -43,6 +43,8 @@ import com.github.devnied.emvnfccard.fragment.BillingFragment;
 import com.github.devnied.emvnfccard.fragment.ConfigurationFragment;
 import com.github.devnied.emvnfccard.fragment.IRefreshable;
 import com.github.devnied.emvnfccard.fragment.ViewPagerFragment;
+import com.github.devnied.emvnfccard.log.ConsoleWriter;
+import com.github.devnied.emvnfccard.log.LoggerFactory;
 import com.github.devnied.emvnfccard.model.EmvCard;
 import com.github.devnied.emvnfccard.model.EmvTransactionRecord;
 import com.github.devnied.emvnfccard.model.enums.CountryCodeEnum;
@@ -139,6 +141,8 @@ public class HomeActivity extends FragmentActivity implements OnItemClickListene
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+
+		LoggerFactory.setLogWriter(new ConsoleWriter());
 
 		if (Build.VERSION.SDK_INT >= 19) {
 			// create our manager instance after the content view is set

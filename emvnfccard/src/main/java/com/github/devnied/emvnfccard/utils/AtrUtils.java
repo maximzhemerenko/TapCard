@@ -22,8 +22,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Collection;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.github.devnied.emvnfccard.log.Logger;
+import com.github.devnied.emvnfccard.log.LoggerFactory;
 
 import static com.github.devnied.emvnfccard.utils.CommonsUtils.UTF_8;
 import static com.github.devnied.emvnfccard.utils.CommonsUtils.deleteWhitespace;

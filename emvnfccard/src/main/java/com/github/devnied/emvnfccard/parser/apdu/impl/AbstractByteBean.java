@@ -22,11 +22,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.github.devnied.emvnfccard.iso7816emv.ITag;
 import com.github.devnied.emvnfccard.iso7816emv.TagAndLength;
+import com.github.devnied.emvnfccard.log.Logger;
+import com.github.devnied.emvnfccard.log.LoggerFactory;
 import com.github.devnied.emvnfccard.model.AbstractData;
 import com.github.devnied.emvnfccard.parser.apdu.IFile;
 import com.github.devnied.emvnfccard.parser.apdu.annotation.AnnotationData;
@@ -49,7 +49,7 @@ public abstract class AbstractByteBean<T> extends AbstractData implements IFile 
 	/**
 	 * Logger of the class
 	 */
-	private static final Logger LOGGER = LoggerFactory.getLogger(AbstractByteBean.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(AbstractByteBean.class);
 
 	/**
 	 * Method to get the annotation set from the current class

@@ -22,8 +22,8 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.github.devnied.emvnfccard.log.Logger;
+import com.github.devnied.emvnfccard.log.LoggerFactory;
 
 import com.github.devnied.emvnfccard.iso7816emv.EmvTags;
 import com.github.devnied.emvnfccard.model.EmvCard;
@@ -74,7 +74,7 @@ public final class TrackUtils {
 				try {
 					pEmvCard.setExpireDate(CommonsUtils.truncate(sdf.parse(m.group(2)), Calendar.MONTH));
 				} catch (ParseException e) {
-					LOGGER.error("Unparsable expire card date : {}", e.getMessage());
+					LOGGER.error("Unparsable expire card date : {}", e);
 					return ret;
 				}
 				// Read service
