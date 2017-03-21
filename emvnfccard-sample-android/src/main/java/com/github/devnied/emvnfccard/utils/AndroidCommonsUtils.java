@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
  * Some methods from Apache Commons library
  */
 
-public class CommonsUtils {
+public class AndroidCommonsUtils {
 
   /**
    * <p>Eight-bit Unicode Transformation Format.</p>

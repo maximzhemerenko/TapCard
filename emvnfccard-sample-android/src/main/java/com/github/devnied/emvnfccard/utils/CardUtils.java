@@ -25,7 +25,7 @@ public final class CardUtils {
 	 */
 	public static String formatCardNumber(final String pCardNumber, final EmvCardScheme pType) {
 		String ret;
-		if (CommonsUtils.isNotBlank(pCardNumber)) {
+		if (AndroidCommonsUtils.isNotBlank(pCardNumber)) {
 			// format amex
 			if (pType != null && pType == EmvCardScheme.AMERICAN_EXPRESS) {
 				ret = StringUtils.deleteWhitespace(pCardNumber).replaceFirst("\\d{4}", "$0 ").replaceFirst("\\d{6}", "$0 ")
@@ -48,8 +48,8 @@ public final class CardUtils {
 	 */
 	public static String formatAid(final String pAid) {
 		String ret = StringUtils.EMPTY;
-		if (CommonsUtils.isNotBlank(pAid)) {
-			ret = CommonsUtils.deleteWhitespace(pAid).replaceAll("[A-F0-9]{2}", "$0 ").trim();
+		if (AndroidCommonsUtils.isNotBlank(pAid)) {
+			ret = AndroidCommonsUtils.deleteWhitespace(pAid).replaceAll("[A-F0-9]{2}", "$0 ").trim();
 		}
 		return ret;
 	}

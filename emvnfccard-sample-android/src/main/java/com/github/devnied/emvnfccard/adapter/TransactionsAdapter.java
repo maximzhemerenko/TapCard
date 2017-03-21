@@ -1,6 +1,5 @@
 package com.github.devnied.emvnfccard.adapter;
 
-import com.github.devnied.emvnfccard.CommonsUtils;
 import java.text.SimpleDateFormat;
 import java.util.Currency;
 import java.util.List;
@@ -16,6 +15,7 @@ import android.widget.TextView;
 
 import com.github.devnied.emvnfccard.R;
 import com.github.devnied.emvnfccard.model.EmvTransactionRecord;
+import com.github.devnied.emvnfccard.utils.AndroidCommonsUtils;
 import com.github.devnied.emvnfccard.utils.ViewHolder;
 import com.github.devnied.emvnfccard.utils.ViewUtils;
 
@@ -150,7 +150,7 @@ public class TransactionsAdapter extends BaseExpandableListAdapter {
 		}
 
 		// Transaction cryptogram
-		if (CommonsUtils.isNotBlank(transaction.getCyptogramData())) {
+		if (AndroidCommonsUtils.isNotBlank(transaction.getCyptogramData())) {
 			ViewHolder.get(v, R.id.row_transaction_crypto).setVisibility(View.VISIBLE);
 			cryptogram.setText(transaction.getCyptogramData());
 		} else {

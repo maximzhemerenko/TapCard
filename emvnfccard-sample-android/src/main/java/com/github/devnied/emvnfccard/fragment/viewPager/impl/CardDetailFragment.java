@@ -1,11 +1,5 @@
 package com.github.devnied.emvnfccard.fragment.viewPager.impl;
 
-import com.github.devnied.emvnfccard.CommonsUtils;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
-
-import org.apache.commons.lang3.StringUtils;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +16,13 @@ import com.github.devnied.emvnfccard.fragment.viewPager.AbstractFragment;
 import com.github.devnied.emvnfccard.fragment.viewPager.IFragment;
 import com.github.devnied.emvnfccard.model.EmvCard;
 import com.github.devnied.emvnfccard.utils.CardUtils;
+import com.github.devnied.emvnfccard.utils.AndroidCommonsUtils;
 import com.github.devnied.emvnfccard.utils.ViewUtils;
+
+import org.apache.commons.lang3.StringUtils;
+
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 /**
  * View pager fragment used to display card detail
@@ -133,18 +133,18 @@ public class CardDetailFragment extends AbstractFragment {
 				mExtendedLayout.removeAllViews();
 
 				// Card holder name
-				if (CommonsUtils.isNotBlank(mCard.getHolderFirstname()) && CommonsUtils.isNotBlank(mCard.getHolderLastname())) {
+				if (AndroidCommonsUtils.isNotBlank(mCard.getHolderFirstname()) && AndroidCommonsUtils.isNotBlank(mCard.getHolderLastname())) {
 					createRaw(getString(R.string.extended_card_holder_name),
 							StringUtils.join(mCard.getHolderFirstname(), " ", mCard.getHolderLastname()));
 				}
 
 				// card AID
-				if (CommonsUtils.isNotEmpty(mCard.getAid())) {
+				if (AndroidCommonsUtils.isNotEmpty(mCard.getAid())) {
 					createRaw(getString(R.string.extended_title_AID), CardUtils.formatAid(mCard.getAid()));
 				}
 
 				// Card Application label
-				if (CommonsUtils.isNotEmpty(mCard.getApplicationLabel())) {
+				if (AndroidCommonsUtils.isNotEmpty(mCard.getApplicationLabel())) {
 					createRaw(getString(R.string.extended_title_application_label), mCard.getApplicationLabel());
 				}
 
