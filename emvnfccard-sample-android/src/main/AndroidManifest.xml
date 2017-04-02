@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.github.devnied.emvnfccard">
+    package="com.github.devnied.sample.emvnfccard">
 
     <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="com.android.vending.BILLING" />
@@ -10,7 +10,7 @@
         android:required="true" />
 
     <application
-        android:name="com.github.devnied.emvnfccard.EmvApplication"
+        android:name="com.github.devnied.sample.emvnfccard.EmvApplication"
         android:alwaysRetainTaskState="true"
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"

@@ -22,7 +22,7 @@ android {
   }
 
   defaultConfig {
-    applicationId 'com.github.devnied.emvnfccard'
+    applicationId 'com.github.devnied.sample.emvnfccard'
     minSdkVersion 15
     targetSdkVersion rootProject.ext.targetSdkVersion
     versionCode 28

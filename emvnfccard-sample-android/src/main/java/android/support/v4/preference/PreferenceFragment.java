@@ -16,7 +16,7 @@
 
 package android.support.v4.preference;
 
-import com.github.devnied.emvnfccard.R;
+import com.github.devnied.sample.emvnfccard.R;
 
 import android.content.Intent;
 import android.os.Bundle;
