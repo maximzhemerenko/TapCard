@@ -1,4 +1,4 @@
-package com.github.devnied.emvpcsccard;
+package io.github.tapcard.sample.pcsc;
 
 import java.nio.ByteBuffer;
 
