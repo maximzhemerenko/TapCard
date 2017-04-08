@@ -19,7 +19,7 @@ import com.github.devnied.sample.emvnfccard.fragment.viewPager.IFragment;
 import com.github.devnied.sample.emvnfccard.fragment.viewPager.impl.CardDetailFragment;
 import com.github.devnied.sample.emvnfccard.fragment.viewPager.impl.LogFragment;
 import com.github.devnied.sample.emvnfccard.fragment.viewPager.impl.TransactionHistoryFragment;
-import com.github.devnied.emvnfccard.model.EmvTransactionRecord;
+import io.github.tapcard.emvnfccard.model.EmvTransactionRecord;
 import com.github.devnied.sample.emvnfccard.view.SlidingTabLayout;
 
 /**

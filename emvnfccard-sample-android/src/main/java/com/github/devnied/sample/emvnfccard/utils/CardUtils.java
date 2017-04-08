@@ -3,7 +3,7 @@ package com.github.devnied.sample.emvnfccard.utils;
 import org.apache.commons.lang3.StringUtils;
 
 import com.github.devnied.sample.emvnfccard.R;
-import com.github.devnied.emvnfccard.enums.EmvCardScheme;
+import io.github.tapcard.emvnfccard.enums.EmvCardScheme;
 
 /**
  * Utils class for card

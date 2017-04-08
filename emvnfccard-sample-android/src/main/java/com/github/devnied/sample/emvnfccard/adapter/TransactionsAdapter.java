@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.devnied.sample.emvnfccard.R;
-import com.github.devnied.emvnfccard.model.EmvTransactionRecord;
+import io.github.tapcard.emvnfccard.model.EmvTransactionRecord;
 import com.github.devnied.sample.emvnfccard.utils.AndroidCommonsUtils;
 import com.github.devnied.sample.emvnfccard.utils.ViewHolder;
 import com.github.devnied.sample.emvnfccard.utils.ViewUtils;

@@ -15,7 +15,7 @@ import com.github.devnied.sample.emvnfccard.R;
 import com.github.devnied.sample.emvnfccard.adapter.TransactionsAdapter;
 import com.github.devnied.sample.emvnfccard.fragment.viewPager.AbstractFragment;
 import com.github.devnied.sample.emvnfccard.fragment.viewPager.IFragment;
-import com.github.devnied.emvnfccard.model.EmvTransactionRecord;
+import io.github.tapcard.emvnfccard.model.EmvTransactionRecord;
 
 /**
  * View pager fragment used to display transaction history

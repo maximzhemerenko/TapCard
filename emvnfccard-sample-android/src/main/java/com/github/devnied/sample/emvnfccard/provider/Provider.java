@@ -6,10 +6,10 @@ import android.nfc.tech.IsoDep;
 import android.util.Log;
 
 import com.github.devnied.sample.emvnfccard.BuildConfig;
-import com.github.devnied.emvnfccard.enums.SwEnum;
-import com.github.devnied.emvnfccard.exception.CommunicationException;
-import com.github.devnied.emvnfccard.parser.IProvider;
-import com.github.devnied.emvnfccard.utils.TlvUtil;
+import io.github.tapcard.emvnfccard.enums.SwEnum;
+import io.github.tapcard.emvnfccard.exception.CommunicationException;
+import io.github.tapcard.emvnfccard.parser.IProvider;
+import io.github.tapcard.emvnfccard.utils.TlvUtil;
 
 import fr.devnied.bitlib.BytesUtils;
 

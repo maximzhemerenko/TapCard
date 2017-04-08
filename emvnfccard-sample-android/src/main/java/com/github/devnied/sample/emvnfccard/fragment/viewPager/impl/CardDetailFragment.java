@@ -14,7 +14,7 @@ import com.github.devnied.sample.emvnfccard.EmvApplication;
 import com.github.devnied.sample.emvnfccard.R;
 import com.github.devnied.sample.emvnfccard.fragment.viewPager.AbstractFragment;
 import com.github.devnied.sample.emvnfccard.fragment.viewPager.IFragment;
-import com.github.devnied.emvnfccard.model.EmvCard;
+import io.github.tapcard.emvnfccard.model.EmvCard;
 import com.github.devnied.sample.emvnfccard.utils.CardUtils;
 import com.github.devnied.sample.emvnfccard.utils.AndroidCommonsUtils;
 import com.github.devnied.sample.emvnfccard.utils.ViewUtils;

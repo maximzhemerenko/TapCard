@@ -38,7 +38,7 @@ android {
 }
 
 dependencies {
-  compile project(':emvnfccard')
+  compile project(':tapcard')
   compile deps.appcompatv7
 
   compile 'org.apache.commons:commons-lang3:3.1'

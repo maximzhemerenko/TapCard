@@ -14,7 +14,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.github.devnied.sample.emvnfccard.R;
-import com.github.devnied.emvnfccard.model.EmvCard;
+import io.github.tapcard.emvnfccard.model.EmvCard;
 import com.github.devnied.sample.emvnfccard.activity.HomeActivity;
 import com.github.devnied.sample.emvnfccard.fragment.viewPager.AbstractFragment;
 import com.github.devnied.sample.emvnfccard.fragment.viewPager.IFragment;

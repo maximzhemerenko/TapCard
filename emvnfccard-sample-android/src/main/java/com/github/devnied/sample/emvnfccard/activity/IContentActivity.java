@@ -1,7 +1,7 @@
 package com.github.devnied.sample.emvnfccard.activity;
 
 import com.github.devnied.sample.emvnfccard.fragment.IRefreshable;
-import com.github.devnied.emvnfccard.model.EmvCard;
+import io.github.tapcard.emvnfccard.model.EmvCard;
 
 public interface IContentActivity {
 

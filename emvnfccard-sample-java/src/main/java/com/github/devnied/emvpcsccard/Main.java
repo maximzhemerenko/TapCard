@@ -11,8 +11,8 @@ import javax.smartcardio.TerminalFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.devnied.emvnfccard.exception.CommunicationException;
-import com.github.devnied.emvnfccard.parser.EmvParser;
+import io.github.tapcard.emvnfccard.exception.CommunicationException;
+import io.github.tapcard.emvnfccard.parser.EmvParser;
 
 public class Main {
 
