@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+
+buildscript {
+  repositories {
+    mavenCentral() // or jcenter()
+  }
+
+  dependencies {
+    classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.3'
+  }
+}
+
+apply plugin: 'com.getkeepsafe.dexcount'
+
+android {
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
+
+  compileOptions {
+    sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
+    targetCompatibility = rootProject.ext.targetCompatibilityVersion
+  }
+
+  defaultConfig {
+    applicationId 'io.github.tapcard.sample.android'
+    minSdkVersion 15
+    targetSdkVersion rootProject.ext.targetSdkVersion
+    versionCode 28
+    versionName '2.1.9'
+  }
+
+  lintOptions {
+    textReport true
+    textOutput 'stdout'
+
+    abortOnError false // TODO fix lint errors
+  }
+}
+
+dependencies {
+  compile project(':tapcard')
+  compile deps.appcompatv7
+
+  compile 'org.apache.commons:commons-lang3:3.1'
+  compile 'commons-io:commons-io:2.4'
+
+  compile 'org.slf4j:slf4j-api:1.7.5'
+  compile 'org.slf4j:slf4j-log4j12:1.7.5'
+  compile 'log4j:log4j:1.2.17'
+
+  compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+  compile('de.keyboardsurfer.android.widget:crouton:1.8.5@aar') {
+    // exclusion is not necessary, but generally a good idea.
+    exclude group: 'com.google.android', module: 'support-v4'
+  }
+  compile('com.github.devnied:bit-lib4j:1.4.12') {
+    exclude group: 'org.slf4j'
+    exclude group: 'log4j'
+  }
+}
+
+afterEvaluate {
+  tasks.withType(com.android.build.gradle.internal.tasks.AndroidTestTask) { task ->
+    task.doFirst {
+      logging.level = LogLevel.INFO
+    }
+    task.doLast {
+      logging.level = LogLevel.LIFECYCLE
+    }
+  }
+}
