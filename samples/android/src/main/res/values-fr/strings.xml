@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Lecteur de carte bancaire</string>
-    <string name="activity_name">Lecteur de carte bancaire</string>
+    <string name="activity_name">TapCard sample</string>
     
     <!-- Msg -->
     <string name="billing_success">Merci pour votre don !</string>
