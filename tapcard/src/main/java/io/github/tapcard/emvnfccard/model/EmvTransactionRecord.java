@@ -213,4 +213,15 @@ public class EmvTransactionRecord extends AbstractByteBean<EmvTransactionRecord>
 		this.time = time;
 	}
 
+	@Override public String toString() {
+		return "EmvTransactionRecord{" +
+				"amount=" + amount +
+				", cyptogramData='" + cyptogramData + '\'' +
+				", terminalCountry=" + terminalCountry +
+				", currency=" + currency +
+				", date=" + date +
+				", transactionType=" + transactionType +
+				", time=" + time +
+				'}';
+	}
 }
