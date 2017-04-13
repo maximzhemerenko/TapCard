@@ -24,7 +24,7 @@ import io.github.tapcard.emvnfccard.model.enums.IKeyEnum;
 import io.github.tapcard.emvnfccard.parser.apdu.annotation.AnnotationData;
 import io.github.tapcard.emvnfccard.utils.EnumUtils;
 
-import fr.devnied.bitlib.BitUtils;
+import io.github.tapcard.emvnfccard.utils.BitUtils;
 
 /**
  * Factory to parse data

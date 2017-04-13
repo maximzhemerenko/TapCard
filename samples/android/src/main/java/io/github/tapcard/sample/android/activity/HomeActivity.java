@@ -62,7 +62,7 @@ import io.github.tapcard.sample.android.utils.SimpleAsyncTask;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 /**
  * Main Activity

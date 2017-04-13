@@ -22,7 +22,7 @@ import io.github.tapcard.emvnfccard.log.LoggerFactory;
 
 import io.github.tapcard.emvnfccard.enums.SwEnum;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 /**
  * Method used to manipulate response from APDU command

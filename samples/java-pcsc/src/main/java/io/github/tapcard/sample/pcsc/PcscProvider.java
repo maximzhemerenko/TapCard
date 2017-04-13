@@ -13,7 +13,7 @@ import io.github.tapcard.emvnfccard.exception.CommunicationException;
 import io.github.tapcard.emvnfccard.parser.IProvider;
 import io.github.tapcard.emvnfccard.utils.TlvUtil;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 public class PcscProvider implements IProvider {
 

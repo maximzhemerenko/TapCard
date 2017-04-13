@@ -30,7 +30,7 @@ import io.github.tapcard.emvnfccard.iso7816emv.ITag;
 import io.github.tapcard.emvnfccard.iso7816emv.TLV;
 import io.github.tapcard.emvnfccard.iso7816emv.TagAndLength;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 /**
  * List of utils methods to manipulate TLV

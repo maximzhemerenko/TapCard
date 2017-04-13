@@ -10,7 +10,7 @@ import io.github.tapcard.emvnfccard.model.enums.ServiceCode1Enum;
 import io.github.tapcard.emvnfccard.model.enums.ServiceCode2Enum;
 import io.github.tapcard.emvnfccard.model.enums.ServiceCode3Enum;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 public class TrackUtilsTest {
 

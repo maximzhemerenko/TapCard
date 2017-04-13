@@ -20,8 +20,8 @@ import io.github.tapcard.emvnfccard.model.enums.ServiceCode2Enum;
 import io.github.tapcard.emvnfccard.model.enums.ServiceCode3Enum;
 import io.github.tapcard.emvnfccard.utils.EnumUtils;
 
-import fr.devnied.bitlib.BitUtils;
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BitUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 /**
  * Track 2 service

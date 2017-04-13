@@ -38,7 +38,7 @@ import io.github.tapcard.emvnfccard.provider.ProviderSelectPaymentEnvTest;
 import io.github.tapcard.emvnfccard.provider.ProviderVisaCardAidTest;
 import io.github.tapcard.emvnfccard.provider.PseProviderTest;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ EmvParser.class })

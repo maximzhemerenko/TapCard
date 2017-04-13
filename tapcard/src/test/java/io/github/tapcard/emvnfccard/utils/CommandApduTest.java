@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import io.github.tapcard.emvnfccard.enums.CommandEnum;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 public class CommandApduTest {
 

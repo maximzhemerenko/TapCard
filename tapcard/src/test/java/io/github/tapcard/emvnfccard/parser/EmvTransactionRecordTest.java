@@ -14,7 +14,7 @@ import io.github.tapcard.emvnfccard.model.enums.CurrencyEnum;
 import io.github.tapcard.emvnfccard.model.enums.TransactionTypeEnum;
 import io.github.tapcard.emvnfccard.utils.TlvUtil;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 public class EmvTransactionRecordTest {
 

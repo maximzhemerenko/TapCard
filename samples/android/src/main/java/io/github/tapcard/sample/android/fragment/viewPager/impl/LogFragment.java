@@ -22,7 +22,7 @@ import io.github.tapcard.sample.android.utils.CroutonUtils;
 import io.github.tapcard.sample.android.utils.CroutonUtils.CoutonColor;
 import io.github.tapcard.sample.android.view.FloatingActionButton;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 /**
  * View pager fragment used to display card log

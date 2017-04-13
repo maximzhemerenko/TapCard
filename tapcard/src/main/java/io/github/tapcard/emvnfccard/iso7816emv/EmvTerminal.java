@@ -25,7 +25,7 @@ import io.github.tapcard.emvnfccard.model.enums.CountryCodeEnum;
 import io.github.tapcard.emvnfccard.model.enums.CurrencyEnum;
 import io.github.tapcard.emvnfccard.model.enums.TransactionTypeEnum;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 /**
  * Factory to create Tag value

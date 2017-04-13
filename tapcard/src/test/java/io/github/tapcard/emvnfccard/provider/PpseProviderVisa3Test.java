@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import io.github.tapcard.emvnfccard.parser.IProvider;
 import io.github.tapcard.emvnfccard.utils.TlvUtil;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 public class PpseProviderVisa3Test implements IProvider {
 

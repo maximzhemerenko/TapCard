@@ -17,7 +17,7 @@ package io.github.tapcard.emvnfccard.iso7816emv;
 
 import java.util.Arrays;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 /**
  * This implementation is a mix of EMV & VISA TTQ

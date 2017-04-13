@@ -5,7 +5,7 @@ import org.fest.assertions.Assertions;
 
 import io.github.tapcard.emvnfccard.parser.IProvider;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 public class ProviderSelectPaymentEnvTest implements IProvider {
 

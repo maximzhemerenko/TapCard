@@ -17,7 +17,7 @@ import io.github.tapcard.emvnfccard.iso7816emv.EmvTags;
 import io.github.tapcard.emvnfccard.iso7816emv.ITag;
 import io.github.tapcard.emvnfccard.iso7816emv.TagAndLength;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ TlvUtil.class })

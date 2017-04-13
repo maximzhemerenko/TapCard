@@ -1,11 +1,6 @@
 apply plugin: 'java'
 
 dependencies {
-  compile ('com.github.devnied:bit-lib4j:1.4.12') {
-    exclude group: 'org.slf4j'
-    exclude group: 'log4j'
-  }
-
   testCompile 'org.apache.commons:commons-lang3:3.1'
   testCompile 'commons-io:commons-io:2.4'
   testCompile 'junit:junit:4.12'

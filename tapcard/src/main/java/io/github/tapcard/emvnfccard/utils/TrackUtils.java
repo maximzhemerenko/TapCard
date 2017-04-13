@@ -29,7 +29,7 @@ import io.github.tapcard.emvnfccard.iso7816emv.EmvTags;
 import io.github.tapcard.emvnfccard.model.EmvCard;
 import io.github.tapcard.emvnfccard.model.Service;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 /**
  * Extract track data

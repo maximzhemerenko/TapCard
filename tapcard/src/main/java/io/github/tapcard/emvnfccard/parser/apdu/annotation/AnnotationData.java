@@ -20,7 +20,7 @@ import java.lang.reflect.Field;
 import io.github.tapcard.emvnfccard.iso7816emv.EmvTags;
 import io.github.tapcard.emvnfccard.iso7816emv.ITag;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 /**
  * Bean which manage all annotation data

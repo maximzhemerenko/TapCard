@@ -15,7 +15,7 @@
  */
 package io.github.tapcard.emvnfccard.enums;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 /**
  * List of status word (last 2 bytes) in APDU response<br/>

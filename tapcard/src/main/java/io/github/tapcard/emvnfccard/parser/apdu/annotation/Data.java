@@ -20,7 +20,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import fr.devnied.bitlib.BitUtils;
+import io.github.tapcard.emvnfccard.utils.BitUtils;
 
 /**
  * Annotation to describe field information

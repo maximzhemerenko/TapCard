@@ -41,7 +41,7 @@ import io.github.tapcard.emvnfccard.utils.ResponseUtils;
 import io.github.tapcard.emvnfccard.utils.TlvUtil;
 import io.github.tapcard.emvnfccard.utils.TrackUtils;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 /**
  * Emv Parser.<br/>

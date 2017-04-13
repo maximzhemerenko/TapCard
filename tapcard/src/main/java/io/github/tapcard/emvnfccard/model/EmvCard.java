@@ -327,4 +327,20 @@ public class EmvCard extends AbstractData {
 		this.nfcLocked = nfcLocked;
 	}
 
+	@Override public String toString() {
+		return "EmvCard{" +
+				"aid='" + aid + '\'' +
+				", holderLastname='" + holderLastname + '\'' +
+				", holderFirstname='" + holderFirstname + '\'' +
+				", cardNumber='" + cardNumber + '\'' +
+				", expireDate=" + expireDate +
+				", type=" + type +
+				", leftPinTry=" + leftPinTry +
+				", applicationLabel='" + applicationLabel + '\'' +
+				", listTransactions=" + listTransactions +
+				", atrDescription=" + atrDescription +
+				", service=" + service +
+				", nfcLocked=" + nfcLocked +
+				'}';
+	}
 }

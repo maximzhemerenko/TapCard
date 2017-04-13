@@ -32,7 +32,7 @@ import io.github.tapcard.emvnfccard.parser.apdu.IFile;
 import io.github.tapcard.emvnfccard.parser.apdu.annotation.AnnotationData;
 import io.github.tapcard.emvnfccard.parser.apdu.annotation.AnnotationUtils;
 
-import fr.devnied.bitlib.BitUtils;
+import io.github.tapcard.emvnfccard.utils.BitUtils;
 
 /**
  * Abstract class for all object to parse

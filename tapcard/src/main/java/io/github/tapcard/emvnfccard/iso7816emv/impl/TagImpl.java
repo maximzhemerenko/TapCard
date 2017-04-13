@@ -22,7 +22,7 @@ import io.github.tapcard.emvnfccard.enums.TagTypeEnum;
 import io.github.tapcard.emvnfccard.enums.TagValueTypeEnum;
 import io.github.tapcard.emvnfccard.iso7816emv.ITag;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 /**
  * 

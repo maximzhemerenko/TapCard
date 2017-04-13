@@ -53,10 +53,6 @@ dependencies {
     // exclusion is not necessary, but generally a good idea.
     exclude group: 'com.google.android', module: 'support-v4'
   }
-  compile('com.github.devnied:bit-lib4j:1.4.12') {
-    exclude group: 'org.slf4j'
-    exclude group: 'log4j'
-  }
 }
 
 afterEvaluate {

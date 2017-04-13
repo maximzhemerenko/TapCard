@@ -17,7 +17,7 @@ package io.github.tapcard.emvnfccard.enums;
 
 import java.util.regex.Pattern;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 /**
  * Class used to define all supported NFC EMV paycard. <link>http://en.wikipedia.org/wiki/Europay_Mastercard_Visa</link>

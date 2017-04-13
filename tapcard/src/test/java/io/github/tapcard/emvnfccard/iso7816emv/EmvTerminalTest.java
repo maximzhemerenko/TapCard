@@ -3,7 +3,7 @@ package io.github.tapcard.emvnfccard.iso7816emv;
 import org.fest.assertions.Assertions;
 import org.junit.Test;
 
-import fr.devnied.bitlib.BytesUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 public class EmvTerminalTest {
 
