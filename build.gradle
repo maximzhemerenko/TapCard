@@ -15,7 +15,7 @@ subprojects { project ->
       }
     }
     dependencies {
-      classpath 'com.android.tools.build:gradle:2.4.0-alpha5'
+      classpath 'com.android.tools.build:gradle:2.4.0-alpha6'
     }
   }
 }
