@@ -20,3 +20,6 @@ android:
       - '.+'
 jdk:
   - oraclejdk8
+
+install: true
+script: ./gradlew build --continue
