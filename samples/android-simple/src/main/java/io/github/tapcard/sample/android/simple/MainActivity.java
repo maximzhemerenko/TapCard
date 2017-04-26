@@ -24,17 +24,19 @@ public class MainActivity extends AppCompatActivity {
   }
 
   @Override protected void onNewIntent(Intent intent) {
-    textView.setText(R.string.reading);
-    readCardDataAsync(intent);
+    if (nfcCardReader.isSuitableIntent(intent)) {
+      textView.setText(R.string.reading);
+      readCardDataAsync(intent);
+    }
   }
 
   @Override protected void onResume() {
-    nfcCardReader.onResume();
+    nfcCardReader.enableDispatch();
     super.onResume();
   }
 
   @Override protected void onPause() {
-    nfcCardReader.onPause();
+    nfcCardReader.disableDispatch();
     super.onPause();
   }
 
