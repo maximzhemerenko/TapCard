@@ -1,13 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 25
-  buildToolsVersion "25.0.2"
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
+
+  compileOptions {
+    sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
+    targetCompatibility = rootProject.ext.targetCompatibilityVersion
+  }
 
   defaultConfig {
     applicationId "io.github.tapcard.sample.android.simple"
-    minSdkVersion 14
-    targetSdkVersion 25
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion rootProject.ext.targetSdkVersion
+
     versionCode 1
     versionName "1.0"
 
@@ -22,8 +28,9 @@ android {
 }
 
 dependencies {
-  compile project(':tapcard')
   compile project(':tapcard-android')
+//  compile deps.tapCardAndroid
+
   compile deps.appcompatv7
   compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
 

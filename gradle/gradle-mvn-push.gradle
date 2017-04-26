@@ -12,9 +12,12 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *
+ * Modified for using with com.github.dcendents.android-maven
  */
 
-apply plugin: 'maven'
+apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'signing'
 
 version = VERSION_NAME
@@ -97,7 +100,11 @@ afterEvaluate { project ->
 
   if (project.getPlugins().hasPlugin('com.android.application') ||
       project.getPlugins().hasPlugin('com.android.library')) {
-    task install(type: Upload, dependsOn: assemble) {
+
+//    Don't needed with com.github.dcendents.android-maven
+//    task install(type: Upload, dependsOn: assemble) {
+
+    install {
       repositories.mavenInstaller {
         configuration = configurations.archives
 
