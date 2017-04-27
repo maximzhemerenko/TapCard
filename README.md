@@ -70,22 +70,31 @@ Done! You got card object contains all data read (Aid, card number, expiration d
 [![Sample demo](https://raw.githubusercontent.com/devnied/EMV-NFC-Paycard-Enrollment/master/images/demo.gif)](https://raw.githubusercontent.com/devnied/EMV-NFC-Paycard-Enrollment/master/images/demo.gif)
 
 ## Download
-Library not published yet
-### Maven
- ```xml
- <dependency>
-   <groupId>io.github.tapcard</groupId>
-   <artifactId>android</artifactId>
-   <version>x.x.x</version>
- </dependency>
- ```
+Library not published yet. But you can use it from JitPack!
 
-### Gradle
- ```groovy
- dependencies {
-	 compile 'io.github.tapcard:android:x.x.x'
- }
- ```
+Step 1. Add the JitPack repository to your build file
+```groovy
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+
+Step 2. Add the dependency
+```groovy
+	dependencies {
+		compile 'com.github.TapCard.TapCard:android:master-SNAPSHOT'
+	}
+```
+or for specific commit
+```groovy
+	dependencies {
+		compile 'com.github.TapCard.TapCard:android:6673d687ba'
+	}
+```
 
 ### About fork
 This is a fork of [EMV-NFC-Paycard-Enrollment](https://github.com/devnied/EMV-NFC-Paycard-Enrollment) by [Millau Julien](http://twitter.com/devnied).
