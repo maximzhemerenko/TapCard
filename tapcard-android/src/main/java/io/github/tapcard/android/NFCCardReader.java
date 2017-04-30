@@ -7,11 +7,15 @@ import android.nfc.Tag;
 import android.nfc.tech.IsoDep;
 
 import java.io.IOException;
+import java.util.concurrent.Callable;
 
 import io.github.tapcard.emvnfccard.log.Logger;
 import io.github.tapcard.emvnfccard.log.LoggerFactory;
 import io.github.tapcard.emvnfccard.model.EmvCard;
 import io.github.tapcard.emvnfccard.parser.EmvParser;
+import rx.Scheduler;
+import rx.Single;
+import rx.schedulers.Schedulers;
 
 public class NFCCardReader {
     private NFCUtils nfcUtils;
@@ -65,8 +69,8 @@ public class NFCCardReader {
      * <p>Note that this method is blocking. You should not use it as is.
      * Instead - wrap it into some async framework: RxJava, AsyncTask, etc</p>
      * <p>
-     * <p>Intent by itself does not contain all data. It contain metadata of NFC card.
-     * For reading data library will open NFC connection and read byte data from card</p>
+     * <p>Intent by itself does not contain all data. It contains metadata of NFC card.
+     * To read card data, library will open NFC connection and transfer some bytes.</p>
      * <p>
      * <p>You should check that this intent contain right data with {@link #isSuitableIntent(Intent)}
      * before calling this method</p>
@@ -99,6 +103,78 @@ public class NFCCardReader {
         } finally {
             tagComm.close();
         }
+    }
+
+    /**
+     * Read card data from given intent.
+     * <p>Intent by itself does not contain all data. It contains metadata of NFC card.
+     * To read card data, library will open NFC connection and transfer some bytes.</p>
+     * <p>You should check that this intent contain right data with {@link #isSuitableIntent(Intent)}
+     * before calling this method</p>
+     * <p>Operates on IO scheduler</p>
+     *
+     * @param intent intent with initial card information.
+     */
+    public Single<EmvCard> readCardRx1(final Intent intent) {
+        return readCardRx1(intent, Schedulers.io());
+    }
+
+    /**
+     * Read card data from given intent.
+     * <p>Intent by itself does not contain all data. It contains metadata of NFC card.
+     * To read card data, library will open NFC connection and transfer some bytes.</p>
+     * <p>You should check that this intent contain right data with {@link #isSuitableIntent(Intent)}
+     * before calling this method</p>
+     * <p>Operates on given scheduler</p>
+     *
+     * @param intent    intent with initial card information.
+     * @param scheduler scheduler for operating
+     */
+    public Single<EmvCard> readCardRx1(final Intent intent, Scheduler scheduler) {
+        return Single
+                .fromCallable(new Callable<EmvCard>() {
+                    @Override
+                    public EmvCard call() throws Exception {
+                        return readCardBlocking(intent);
+                    }
+                })
+                .subscribeOn(scheduler);
+    }
+
+    /**
+     * Read card data from given intent.
+     * <p>Intent by itself does not contain all data. It contains metadata of NFC card.
+     * To read card data, library will open NFC connection and transfer some bytes.</p>
+     * <p>You should check that this intent contain right data with {@link #isSuitableIntent(Intent)}
+     * before calling this method</p>
+     * <p>Operates on IO scheduler</p>
+     *
+     * @param intent intent with initial card information.
+     */
+    public io.reactivex.Single<EmvCard> readCardRx2(final Intent intent) {
+        return readCardRx2(intent, io.reactivex.schedulers.Schedulers.io());
+    }
+
+    /**
+     * Read card data from given intent.
+     * <p>Intent by itself does not contain all data. It contains metadata of NFC card.
+     * To read card data, library will open NFC connection and transfer some bytes.</p>
+     * <p>You should check that this intent contain right data with {@link #isSuitableIntent(Intent)}
+     * before calling this method</p>
+     * <p>Operates on given scheduler</p>
+     *
+     * @param intent    intent with initial card information.
+     * @param scheduler scheduler for operating
+     */
+    public io.reactivex.Single<EmvCard> readCardRx2(final Intent intent, io.reactivex.Scheduler scheduler) {
+        return io.reactivex.Single.
+                fromCallable(new Callable<EmvCard>() {
+                    @Override
+                    public EmvCard call() throws Exception {
+                        return readCardBlocking(intent);
+                    }
+                })
+                .subscribeOn(scheduler);
     }
 
     public static class WrongIntentException extends Exception {
