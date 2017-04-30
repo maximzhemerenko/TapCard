@@ -1,41 +1,39 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.getkeepsafe.dexcount'
 
 android {
-  compileSdkVersion rootProject.ext.compileSdkVersion
-  buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
-  compileOptions {
-    sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
-    targetCompatibility = rootProject.ext.targetCompatibilityVersion
-  }
-
-  defaultConfig {
-    applicationId "io.github.tapcard.sample.android.simple"
-    minSdkVersion rootProject.ext.minSdkVersion
-    targetSdkVersion rootProject.ext.targetSdkVersion
-
-    versionCode 1
-    versionName "1.0"
-
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-  }
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    compileOptions {
+        sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
+        targetCompatibility = rootProject.ext.targetCompatibilityVersion
     }
-  }
+
+    defaultConfig {
+        applicationId "io.github.tapcard.sample.android.simple"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
 }
 
 dependencies {
-  compile project(':tapcard-android')
+    compile project(':tapcard-android')
 //  compile deps.tapCardAndroid
 
-  compile deps.appcompatv7
-  compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+    compile deps.appcompatv7
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
 
-  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-    exclude group: 'com.android.support', module: 'support-annotations'
-  })
-  testCompile 'junit:junit:4.12'
+    testCompile deps.junit
 }
