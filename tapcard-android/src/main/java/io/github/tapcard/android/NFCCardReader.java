@@ -7,16 +7,20 @@ import android.nfc.Tag;
 import android.nfc.tech.IsoDep;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.concurrent.Callable;
 
 import io.github.tapcard.emvnfccard.log.Logger;
 import io.github.tapcard.emvnfccard.log.LoggerFactory;
 import io.github.tapcard.emvnfccard.model.EmvCard;
 import io.github.tapcard.emvnfccard.parser.EmvParser;
+import io.github.tapcard.emvnfccard.utils.AtrUtils;
+import io.github.tapcard.emvnfccard.utils.BytesUtils;
 import rx.Scheduler;
 import rx.Single;
 import rx.schedulers.Schedulers;
 
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class NFCCardReader {
     private NFCUtils nfcUtils;
     private AndroidNfcProvider provider;
@@ -99,10 +103,29 @@ public class NFCCardReader {
             provider.setmTagCom(tagComm);
 
             EmvParser parser = new EmvParser(provider, true);
-            return parser.readEmvCard();
+            final EmvCard emvCard = parser.readEmvCard();
+
+            emvCard.setAtrDescription(extractAtsDescription(tagComm));
+            return emvCard;
         } finally {
             tagComm.close();
         }
+    }
+
+    /**
+     * Get ATS from isoDep and find matching description
+     */
+    private Collection<String> extractAtsDescription(final IsoDep pIso) {
+        byte[] pAts = null;
+        if (pIso.isConnected()) {
+            // Extract ATS from NFC-A
+            pAts = pIso.getHistoricalBytes();
+            if (pAts == null) {
+                // Extract ATS from NFC-B
+                pAts = pIso.getHiLayerResponse();
+            }
+        }
+        return AtrUtils.getDescriptionFromAts(BytesUtils.bytesToString(pAts));
     }
 
     /**

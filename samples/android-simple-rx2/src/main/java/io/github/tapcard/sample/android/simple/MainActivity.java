@@ -59,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
                 CardUtils.formatCardNumber(card.getCardNumber(), card.getType()),
                 DateFormat.format("M/y", card.getExpireDate()),
                 "---",
+                "Bank info (probably): ",
+                card.getAtrDescription(),
+                "---",
                 card.toString().replace(", ", ",\n")
         });
         textView.setText(text);
