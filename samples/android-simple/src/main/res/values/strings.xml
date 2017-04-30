@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">TapCardExample</string>
+  <string name="app_name">TapCard</string>
   <string name="error">Error while reading card data :( \nTry again: tap card and hold for a while.</string>
   <string name="reading">Reading…</string>
   <string name="blank">Tap card!</string>
