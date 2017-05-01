@@ -1,10 +1,11 @@
 package io.github.tapcard.emvnfccard.utils;
 
-import java.util.Arrays;
-
 import org.fest.assertions.Assertions;
 import org.junit.Test;
 
+import java.util.Arrays;
+
+@SuppressWarnings("ArraysAsListWithZeroOrOneArgument")
 public class AtrTest {
 
 	@Test
@@ -17,6 +18,9 @@ public class AtrTest {
 				.isEqualTo(
 						Arrays.asList("HID Corporate 1000 Format",
 								"http://www.hidglobal.com/sites/hidglobal.com/files/resource_files/omnikey_contactless_developer_guide.pdf"));
+		Assertions
+				.assertThat(AtrUtils.getDescription("3F FD 11 25 02 50 00 03 33 B0 15 69 FF 4A 50 F0 80 03 4B 4C 03"))
+				.isEqualTo(Arrays.asList("Kabel Deutschland G02  (Pay TV)"));
 	}
 
 	@Test

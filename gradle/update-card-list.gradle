@@ -1,0 +1,25 @@
+apply plugin: 'de.undercouch.download'
+
+task updateCardList {
+    doLast {
+        def tempFile = new File("$buildDir/tmp", "smartcard_list.txt")
+        try {
+            download {
+                src 'http://ludovic.rousseau.free.fr/softwares/pcsc-tools/smartcard_list.txt'
+                dest tempFile
+            }
+
+            def targetDir = "$buildDir/resources/main/"
+            logger.lifecycle("Copying new card list to $targetDir${tempFile.name}")
+
+            copy {
+                from tempFile
+                into targetDir
+            }
+        } catch (Exception e) {
+            logger.warn("Can't update card list. Fallback to old one.")
+            logger.debug("Can't update card list", e)
+        }
+    }
+}
+processResources.finalizedBy updateCardList

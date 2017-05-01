@@ -19,4 +19,5 @@ sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
 targetCompatibility = rootProject.ext.targetCompatibilityVersion
 
 
+apply from: rootProject.file('gradle/update-card-list.gradle')
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
