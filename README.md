@@ -10,6 +10,8 @@ Demo app available on the Google Play:
 
 [![Demo app screen](https://raw.githubusercontent.com/devnied/EMV-NFC-Paycard-Enrollment/master/images/demo.gif)](https://raw.githubusercontent.com/devnied/EMV-NFC-Paycard-Enrollment/master/images/demo.gif)
 
+[Go to GitHub repo](https://github.com/TapCard/TapCard)
+
 ### Getting started
 
 Create the reader
