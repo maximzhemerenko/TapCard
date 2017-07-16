@@ -26,41 +26,25 @@ After this, app will activate NFC and start waiting for card.
 Once user is tapped phone, activity will got intent.
 
 Check that it is right intent and pass it to library.
-Library processing is blocking so wrap it in async call. For example `AsyncTask`:
+Library processing is blocking so wrap it in async call.
+
+You can use our Rx wrappers:
 ```java
     @Override
     protected void onNewIntent(Intent intent) {
         if (nfcCardReader.isSuitableIntent(intent)) {
-            readCardDataAsync(intent);
+            textView.setText("Reading...");
+
+            cardReadDisposable.dispose();
+            cardReadDisposable = nfcCardReader
+                    .readCardRx2(intent)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(
+                            emvCard -> fillCardNumber(emvCard.getCardNumber()),
+                            throwable -> showError());
         }
     }
-
-    private void readCardDataAsync(Intent intent) {
-        new AsyncTask<Intent, Object, EmvCard>() {
-
-            @Override
-            protected EmvCard doInBackground(Intent... intents) {
-                try {
-                    return nfcCardReader.readCardBlocking(intents[0]);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (NFCCardReader.WrongIntentException e) {
-                    e.printStackTrace();
-                } catch (NFCCardReader.WrongTagTech e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(EmvCard emvCard) {
-                showCardInfo(emvCard);
-            }
-        }.execute(intent);
-    }
-
 ```
-
 
 Don't forget to stop waiting if Activity is paused or card reading is not needed more.
 ```java
@@ -69,6 +53,7 @@ nfcCardReader.disableDispatch();
 
 Done! You got a card object, that contains all read data (Aid, card number, expiration date, card type, transactions history)
 
+For more examples checkout [`samples`](https://github.com/TapCard/TapCard/tree/master/samples) directory of this repo
 
 ## Download
 Library is not published yet. But you can use it from JitPack!
