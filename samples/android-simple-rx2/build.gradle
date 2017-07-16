@@ -38,7 +38,7 @@ dependencies {
     compile deps.rxJava2Android
 
     compile deps.appcompatv7
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+    compile 'com.android.support.constraint:constraint-layout:1.1.0-beta1'
 
     testCompile deps.junit
 }
