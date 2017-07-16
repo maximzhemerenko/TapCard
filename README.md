@@ -4,7 +4,7 @@ Replace card number input with NFC tap!
 ### Description
 A Java library to let your app users enter an NFC or EMV card info in a flash – just by holding it to the back of their phone. Don’t lose clients because they hate to manually enter all the card details – this process on a phone is awkward.<br/>
 
-Demo app available on the Play store
+Demo app available on the Google Play:
 
 <a href="http://bit.ly/2uxKxPD"><img height="60px" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge.png" /></a>
 
@@ -22,7 +22,7 @@ When you will be ready - wait for NFC card.
 nfcCardReader.enableDispatch();
 ```
 
-After this app will activate NFC and start waiting for card.
+After this, app will activate NFC and start waiting for card.
 Once user is tapped phone, activity will got intent.
 
 Check that it is right intent and pass it to library.
@@ -67,11 +67,11 @@ Don't forget to stop waiting if Activity is paused or card reading is not needed
 nfcCardReader.disableDispatch();
 ```
 
-Done! You got card object contains all data read (Aid, card number, expiration date, card type, transactions history)
+Done! You got a card object, that contains all read data (Aid, card number, expiration date, card type, transactions history)
 
 
 ## Download
-Library not published yet. But you can use it from JitPack!
+Library is not published yet. But you can use it from JitPack!
 
 Step 1. Add the JitPack repository to your build file
 ```groovy
