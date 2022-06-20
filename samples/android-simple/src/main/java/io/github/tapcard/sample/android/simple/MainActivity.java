@@ -10,8 +10,9 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
+import com.github.devnied.emvnfccard.model.EmvCard;
+
 import io.github.tapcard.android.NFCCardReader;
-import io.github.tapcard.emvnfccard.model.EmvCard;
 
 public class MainActivity extends AppCompatActivity {
     private NFCCardReader nfcCardReader;
