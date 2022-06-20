@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.getkeepsafe.dexcount'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -30,11 +29,13 @@ android {
 }
 
 dependencies {
-    compile project(':tapcard-android')
-//  compile deps.tapCardAndroid
+    implementation project(':tapcard')
+    implementation project(':tapcard-android')
 
-    compile deps.appcompatv7
-    compile 'com.android.support.constraint:constraint-layout:1.1.0-beta1'
+//    implementation deps.rxJava1
 
-    testCompile deps.junit
+    implementation deps.appcompatv7
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta1'
+
+    testImplementation deps.junit
 }
