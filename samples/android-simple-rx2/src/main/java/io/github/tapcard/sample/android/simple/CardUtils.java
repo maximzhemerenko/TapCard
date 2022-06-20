@@ -2,8 +2,6 @@ package io.github.tapcard.sample.android.simple;
 
 import android.text.TextUtils;
 
-import io.github.tapcard.emvnfccard.enums.EmvCardScheme;
-
 /**
  * Utils class for card
  *

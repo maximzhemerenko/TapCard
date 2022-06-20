@@ -14,7 +14,8 @@ android {
 }
 
 dependencies {
-    implementation project(':tapcard')
+//    implementation project(':tapcard')
+    implementation 'com.github.devnied.emvnfccard:library:3.0.1'
 
     compileOnly deps.rxJava1 // Optional
     compileOnly deps.rxJava2 // Optional
