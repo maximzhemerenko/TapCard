@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.getkeepsafe.dexcount'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -15,12 +14,10 @@ android {
 }
 
 dependencies {
-    compile project(':tapcard')
+    implementation project(':tapcard')
 
-    provided deps.rxJava1 // Optional
-    provided deps.rxJava2 // Optional
+    compileOnly deps.rxJava1 // Optional
+    compileOnly deps.rxJava2 // Optional
 
-    testCompile deps.junit
+//    testImplementation deps.junit
 }
-
-apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

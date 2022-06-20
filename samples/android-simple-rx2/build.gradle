@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.getkeepsafe.dexcount'
 apply plugin: 'me.tatarka.retrolambda'
 
 android {
@@ -31,14 +30,14 @@ android {
 }
 
 dependencies {
-    compile project(':tapcard-android')
-//  compile deps.tapCardAndroid
+    implementation project(':tapcard-android')
+    implementation project(':tapcard')
 
-    compile deps.rxJava2
-    compile deps.rxJava2Android
+    implementation deps.rxJava2
+    implementation deps.rxJava2Android
 
-    compile deps.appcompatv7
-    compile 'com.android.support.constraint:constraint-layout:1.1.0-beta1'
+    implementation deps.appcompatv7
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta1'
 
-    testCompile deps.junit
+    testImplementation deps.junit
 }
