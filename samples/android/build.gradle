@@ -1,6 +1,7 @@
 import com.android.build.gradle.internal.tasks.AndroidTestTask
 
 apply plugin: 'com.android.application'
+apply plugin: "com.bugsnag.android.gradle"
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -43,6 +44,8 @@ dependencies {
         // exclusion is not necessary, but generally a good idea.
         exclude group: 'com.google.android', module: 'support-v4'
     }
+
+    implementation "com.bugsnag:bugsnag-android:5.+"
 }
 
 afterEvaluate {

@@ -321,6 +321,7 @@ public class HomeActivity extends FragmentActivity implements OnItemClickListene
 
 						EmvParser parser = new EmvParser(mProvider, true);
 						mCard = parser.readEmvCard();
+
 						if (mCard != null) {
 							mCard.setAtrDescription(extractAtsDescription(lastAts));
 						}
