@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
+import org.slf4j.LoggerFactory;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -34,25 +35,24 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import fr.devnied.bitlib.BytesUtils;
 import io.github.tapcard.sample.android.BuildConfig;
 import io.github.tapcard.sample.android.R;
 import io.github.tapcard.sample.android.adapter.MenuDrawerAdapter;
-import io.github.tapcard.emvnfccard.enums.EmvCardScheme;
+import com.github.devnied.emvnfccard.enums.EmvCardScheme;
 import io.github.tapcard.sample.android.fragment.AboutFragment;
 import io.github.tapcard.sample.android.fragment.BillingFragment;
 import io.github.tapcard.sample.android.fragment.ConfigurationFragment;
 import io.github.tapcard.sample.android.fragment.IRefreshable;
 import io.github.tapcard.sample.android.fragment.ViewPagerFragment;
-import io.github.tapcard.emvnfccard.log.ConsoleWriter;
-import io.github.tapcard.emvnfccard.log.LoggerFactory;
-import io.github.tapcard.emvnfccard.model.EmvCard;
-import io.github.tapcard.emvnfccard.model.EmvTransactionRecord;
-import io.github.tapcard.emvnfccard.model.enums.CountryCodeEnum;
-import io.github.tapcard.emvnfccard.model.enums.CurrencyEnum;
-import io.github.tapcard.emvnfccard.model.enums.TransactionTypeEnum;
-import io.github.tapcard.emvnfccard.parser.EmvParser;
+import com.github.devnied.emvnfccard.model.EmvCard;
+import com.github.devnied.emvnfccard.model.EmvTransactionRecord;
+import com.github.devnied.emvnfccard.model.enums.CountryCodeEnum;
+import com.github.devnied.emvnfccard.model.enums.CurrencyEnum;
+import com.github.devnied.emvnfccard.model.enums.TransactionTypeEnum;
+import com.github.devnied.emvnfccard.parser.EmvTemplate;
 import io.github.tapcard.sample.android.provider.Provider;
-import io.github.tapcard.emvnfccard.utils.AtrUtils;
+import com.github.devnied.emvnfccard.utils.AtrUtils;
 import io.github.tapcard.sample.android.utils.AndroidCommonsUtils;
 import io.github.tapcard.sample.android.utils.ConstantUtils;
 import io.github.tapcard.sample.android.utils.CroutonUtils;
@@ -62,7 +62,6 @@ import io.github.tapcard.sample.android.utils.SimpleAsyncTask;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
-import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 /**
  * Main Activity
@@ -142,7 +141,7 @@ public class HomeActivity extends FragmentActivity implements OnItemClickListene
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		LoggerFactory.setLogWriter(new ConsoleWriter());
+//		LoggerFactory.setLogWriter(new ConsoleWriter());
 
 		if (Build.VERSION.SDK_INT >= 19) {
 			// create our manager instance after the content view is set
@@ -319,7 +318,7 @@ public class HomeActivity extends FragmentActivity implements OnItemClickListene
 
 						mProvider.setmTagCom(mTagcomm);
 
-						EmvParser parser = new EmvParser(mProvider, true);
+						EmvTemplate parser = EmvTemplate.Builder().setProvider(mProvider).build();
 						mCard = parser.readEmvCard();
 
 						if (mCard != null) {
@@ -346,9 +345,9 @@ public class HomeActivity extends FragmentActivity implements OnItemClickListene
 							if (AndroidCommonsUtils.isNotBlank(mCard.getCardNumber())) {
 								CroutonUtils.display(HomeActivity.this, getText(R.string.card_read), CoutonColor.GREEN);
 								mReadCard = mCard;
-							} else if (mCard.isNfcLocked()) {
+							} /*else if (mCard.isNfcLocked()) {
 								CroutonUtils.display(HomeActivity.this, getText(R.string.nfc_locked), CoutonColor.ORANGE);
-							}
+							}*/
 						} else {
 							CroutonUtils.display(HomeActivity.this, getText(R.string.error_card_unknown), CoutonColor.BLACK);
 						}
@@ -395,65 +394,65 @@ public class HomeActivity extends FragmentActivity implements OnItemClickListene
 		return AtrUtils.getDescriptionFromAts(BytesUtils.bytesToString(pAts));
 	}
 
-	@Override
-	public void onBackPressed() {
-		if (BuildConfig.DEBUG) {
-			if (mReadCard == null) {
-				StringBuffer buff = mProvider.getLog();
-				for (int i = 0; i < 60; i++) {
-					buff.append("=============<br/>");
-				}
-				mReadCard = new EmvCard();
-				mReadCard.setCardNumber("4123456789012345");
-				mReadCard.setAid("A0 00 00 000310 10");
-				mReadCard.setLeftPinTry(3);
-				mReadCard.setAtrDescription(Arrays.asList("CB Visa Banque Populaire (France)"));
-				mReadCard.setApplicationLabel("CB");
-				mReadCard.setHolderFirstname("John");
-				mReadCard.setHolderFirstname("Doe");
-				mReadCard.setExpireDate(new Date());
-				mReadCard.setType(EmvCardScheme.UNIONPAY);
-				List<EmvTransactionRecord> records = new ArrayList<EmvTransactionRecord>();
-				// payment
-				EmvTransactionRecord payment = new EmvTransactionRecord();
-				payment.setAmount((float) 100.0);
-				payment.setCurrency(CurrencyEnum.EUR);
-				payment.setCyptogramData("12");
-				payment.setTerminalCountry(CountryCodeEnum.FR);
-				payment.setDate(new Date());
-				payment.setTransactionType(TransactionTypeEnum.REFUND);
-				records.add(payment);
-
-				payment = new EmvTransactionRecord();
-				payment.setAmount((float) 12.0);
-				payment.setCurrency(CurrencyEnum.USD);
-				payment.setCyptogramData("40");
-				payment.setTerminalCountry(CountryCodeEnum.US);
-				payment.setDate(new Date());
-				payment.setTransactionType(TransactionTypeEnum.PURCHASE);
-				records.add(payment);
-
-				payment = new EmvTransactionRecord();
-				payment.setAmount((float) 120.0);
-				payment.setCurrency(CurrencyEnum.USD);
-				payment.setCyptogramData("40");
-				payment.setTerminalCountry(null);
-				payment.setDate(new Date());
-				payment.setTransactionType(null);
-				records.add(payment);
-
-				mReadCard.setListTransactions(records);
-				refreshContent();
-				CroutonUtils.display(HomeActivity.this, getText(R.string.card_read), CoutonColor.GREEN);
-			} else if (mReadCard != null) {
-				mReadCard = null;
-				refreshContent();
-				CroutonUtils.display(HomeActivity.this, getText(R.string.card_read), CoutonColor.GREEN);
-			}
-		} else {
-			super.onBackPressed();
-		}
-	}
+//	@Override
+//	public void onBackPressed() {
+//		if (BuildConfig.DEBUG) {
+//			if (mReadCard == null) {
+//				StringBuffer buff = mProvider.getLog();
+//				for (int i = 0; i < 60; i++) {
+//					buff.append("=============<br/>");
+//				}
+//				mReadCard = new EmvCard();
+//				mReadCard.setCardNumber("4123456789012345");
+//				mReadCard.setAid("A0 00 00 000310 10");
+//				mReadCard.setLeftPinTry(3);
+//				mReadCard.setAtrDescription(Arrays.asList("CB Visa Banque Populaire (France)"));
+//				mReadCard.setApplicationLabel("CB");
+//				mReadCard.setHolderFirstname("John");
+//				mReadCard.setHolderFirstname("Doe");
+//				mReadCard.setExpireDate(new Date());
+//				mReadCard.setType(EmvCardScheme.UNIONPAY);
+//				List<EmvTransactionRecord> records = new ArrayList<EmvTransactionRecord>();
+//				// payment
+//				EmvTransactionRecord payment = new EmvTransactionRecord();
+//				payment.setAmount((float) 100.0);
+//				payment.setCurrency(CurrencyEnum.EUR);
+//				payment.setCyptogramData("12");
+//				payment.setTerminalCountry(CountryCodeEnum.FR);
+//				payment.setDate(new Date());
+//				payment.setTransactionType(TransactionTypeEnum.REFUND);
+//				records.add(payment);
+//
+//				payment = new EmvTransactionRecord();
+//				payment.setAmount((float) 12.0);
+//				payment.setCurrency(CurrencyEnum.USD);
+//				payment.setCyptogramData("40");
+//				payment.setTerminalCountry(CountryCodeEnum.US);
+//				payment.setDate(new Date());
+//				payment.setTransactionType(TransactionTypeEnum.PURCHASE);
+//				records.add(payment);
+//
+//				payment = new EmvTransactionRecord();
+//				payment.setAmount((float) 120.0);
+//				payment.setCurrency(CurrencyEnum.USD);
+//				payment.setCyptogramData("40");
+//				payment.setTerminalCountry(null);
+//				payment.setDate(new Date());
+//				payment.setTransactionType(null);
+//				records.add(payment);
+//
+//				mReadCard.setListTransactions(records);
+//				refreshContent();
+//				CroutonUtils.display(HomeActivity.this, getText(R.string.card_read), CoutonColor.GREEN);
+//			} else if (mReadCard != null) {
+//				mReadCard = null;
+//				refreshContent();
+//				CroutonUtils.display(HomeActivity.this, getText(R.string.card_read), CoutonColor.GREEN);
+//			}
+//		} else {
+//			super.onBackPressed();
+//		}
+//	}
 
 	@Override
 	protected void onDestroy() {

@@ -4,7 +4,7 @@ apply plugin: 'application'
 mainClassName = 'io.github.tapcard.sample.pcsc.Main'
 
 dependencies {
-    implementation project(':tapcard')
+    implementation 'com.github.devnied.emvnfccard:library:3.0.1'
 
     implementation 'org.slf4j:slf4j-api:1.7.5'
     implementation 'org.slf4j:slf4j-log4j12:1.7.5'

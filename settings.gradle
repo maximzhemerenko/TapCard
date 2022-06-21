@@ -1,8 +1,7 @@
-include ':tapcard',
-        ':tapcard-android',
+include ':tapcard-android',
         ':samples:android',
         ':samples:android-simple',
 //        ':samples:android-simple-rx2',
-        ':samples:java-pcsc'
+//        ':samples:java-pcsc'
 
 rootProject.name = 'tapcard-parent'

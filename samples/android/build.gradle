@@ -29,7 +29,8 @@ android {
 }
 
 dependencies {
-    implementation project(':tapcard')
+    implementation 'com.github.devnied.emvnfccard:library:3.0.1'
+    implementation project(':tapcard-android')
     implementation deps.appcompatv7
 
     implementation 'org.apache.commons:commons-lang3:3.1'

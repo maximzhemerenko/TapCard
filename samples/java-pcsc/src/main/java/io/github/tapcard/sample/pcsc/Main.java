@@ -11,8 +11,8 @@ import javax.smartcardio.TerminalFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.github.tapcard.emvnfccard.exception.CommunicationException;
-import io.github.tapcard.emvnfccard.parser.EmvParser;
+import com.github.devnied.emvnfccard.exception.CommunicationException;
+import com.github.devnied.emvnfccard.parser.EmvTemplate;
 
 public class Main {
 
@@ -37,7 +37,7 @@ public class Main {
 			CardChannel channel = card.getBasicChannel();
 
 			PcscProvider provider = new PcscProvider(channel);
-			EmvParser parser = new EmvParser(provider, false);
+			EmvTemplate parser = EmvTemplate.Builder().setProvider(provider).build();
 			parser.readEmvCard();
 
 			// Disconnect the card

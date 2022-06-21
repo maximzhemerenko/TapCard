@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+
 import io.github.tapcard.sample.android.R;
 import io.github.tapcard.sample.android.activity.IContentActivity;
 import io.github.tapcard.sample.android.adapter.ViewPagerAdapter;
@@ -19,7 +21,10 @@ import io.github.tapcard.sample.android.fragment.viewPager.IFragment;
 import io.github.tapcard.sample.android.fragment.viewPager.impl.CardDetailFragment;
 import io.github.tapcard.sample.android.fragment.viewPager.impl.LogFragment;
 import io.github.tapcard.sample.android.fragment.viewPager.impl.TransactionHistoryFragment;
-import io.github.tapcard.emvnfccard.model.EmvTransactionRecord;
+
+import com.github.devnied.emvnfccard.model.Application;
+import com.github.devnied.emvnfccard.model.EmvCard;
+import com.github.devnied.emvnfccard.model.EmvTransactionRecord;
 import io.github.tapcard.sample.android.view.SlidingTabLayout;
 
 /**
@@ -59,12 +64,24 @@ public class ViewPagerFragment extends Fragment implements IRefreshable {
 		return inflater.inflate(R.layout.viewpager, container, false);
 	}
 
+	@Nullable
+	private List<EmvTransactionRecord> getListTransactions() {
+		List<EmvTransactionRecord> transactions = null;
+		EmvCard card = mContentActivity.getCard();
+		if (card != null) {
+			Application application = null;
+			if (card.getApplications().size()>0) {
+				application = card.getApplications().get(0);
+				transactions = application.getListTransactions();
+			}
+		}
+
+		return transactions;
+	}
+
 	@Override
 	public void onViewCreated(final View view, final Bundle savedInstanceState) {
-		List<EmvTransactionRecord> transactions = null;
-		if (mContentActivity.getCard() != null) {
-			transactions = mContentActivity.getCard().getListTransactions();
-		}
+		List<EmvTransactionRecord> transactions = getListTransactions();
 
 		// Add fragments
 		fragments.add(CardDetailFragment.newInstance(mContentActivity.getCard(), getString(R.string.viewpager_carddetail)));
@@ -111,8 +128,7 @@ public class ViewPagerFragment extends Fragment implements IRefreshable {
 			} else if (frag instanceof CardDetailFragment) {
 				((CardDetailFragment) frag).update(mContentActivity.getCard());
 			} else if (frag instanceof TransactionHistoryFragment) {
-				((TransactionHistoryFragment) frag).update(mContentActivity.getCard() != null ? mContentActivity.getCard()
-						.getListTransactions() : null);
+				((TransactionHistoryFragment) frag).update(getListTransactions());
 			}
 		}
 		if (mViewPagerAdapter != null) {
