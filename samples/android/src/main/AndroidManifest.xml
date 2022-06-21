@@ -35,6 +35,10 @@
                 android:name="android.nfc.action.TECH_DISCOVERED"
                 android:resource="@xml/nfc_tech_list" />
         </activity>
+
+        <meta-data
+           android:name="com.bugsnag.android.API_KEY"
+           android:value="404e0015a251d7a1bf879e357f6b6a64"/>
     </application>
 
 </manifest>
