@@ -5,13 +5,12 @@ import java.io.IOException;
 import android.nfc.tech.IsoDep;
 import android.util.Log;
 
+import fr.devnied.bitlib.BytesUtils;
 import io.github.tapcard.sample.android.BuildConfig;
-import io.github.tapcard.emvnfccard.enums.SwEnum;
-import io.github.tapcard.emvnfccard.exception.CommunicationException;
-import io.github.tapcard.emvnfccard.parser.IProvider;
-import io.github.tapcard.emvnfccard.utils.TlvUtil;
-
-import io.github.tapcard.emvnfccard.utils.BytesUtils;
+import com.github.devnied.emvnfccard.enums.SwEnum;
+import com.github.devnied.emvnfccard.exception.CommunicationException;
+import com.github.devnied.emvnfccard.parser.IProvider;
+import com.github.devnied.emvnfccard.utils.TlvUtil;
 
 /**
  * Provider used to communicate with EMV card
@@ -66,6 +65,14 @@ public class Provider implements IProvider {
 		}
 
 		return response;
+	}
+
+	@Override
+	public byte[] getAt() {
+		// For NFC-A
+		return mTagCom.getHistoricalBytes();
+		// For NFC-B
+		// return mTagCom.getHiLayerResponse();
 	}
 
 	/**

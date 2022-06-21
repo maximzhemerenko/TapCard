@@ -3,7 +3,7 @@ package io.github.tapcard.sample.android.utils;
 import org.apache.commons.lang3.StringUtils;
 
 import io.github.tapcard.sample.android.R;
-import io.github.tapcard.emvnfccard.enums.EmvCardScheme;
+import com.github.devnied.emvnfccard.enums.EmvCardScheme;
 
 /**
  * Utils class for card

@@ -1,7 +1,7 @@
 package io.github.tapcard.sample.android.activity;
 
 import io.github.tapcard.sample.android.fragment.IRefreshable;
-import io.github.tapcard.emvnfccard.model.EmvCard;
+import com.github.devnied.emvnfccard.model.EmvCard;
 
 public interface IContentActivity {
 

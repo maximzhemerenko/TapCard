@@ -15,7 +15,7 @@ import io.github.tapcard.sample.android.R;
 import io.github.tapcard.sample.android.adapter.TransactionsAdapter;
 import io.github.tapcard.sample.android.fragment.viewPager.AbstractFragment;
 import io.github.tapcard.sample.android.fragment.viewPager.IFragment;
-import io.github.tapcard.emvnfccard.model.EmvTransactionRecord;
+import com.github.devnied.emvnfccard.model.EmvTransactionRecord;
 
 /**
  * View pager fragment used to display transaction history

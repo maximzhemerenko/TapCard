@@ -14,7 +14,9 @@ import io.github.tapcard.sample.android.EmvApplication;
 import io.github.tapcard.sample.android.R;
 import io.github.tapcard.sample.android.fragment.viewPager.AbstractFragment;
 import io.github.tapcard.sample.android.fragment.viewPager.IFragment;
-import io.github.tapcard.emvnfccard.model.EmvCard;
+
+import com.github.devnied.emvnfccard.model.Application;
+import com.github.devnied.emvnfccard.model.EmvCard;
 import io.github.tapcard.sample.android.utils.CardUtils;
 import io.github.tapcard.sample.android.utils.AndroidCommonsUtils;
 import io.github.tapcard.sample.android.utils.ViewUtils;
@@ -139,13 +141,26 @@ public class CardDetailFragment extends AbstractFragment {
 				}
 
 				// card AID
-				if (AndroidCommonsUtils.isNotEmpty(mCard.getAid())) {
-					createRaw(getString(R.string.extended_title_AID), CardUtils.formatAid(mCard.getAid()));
+				String aid = null;
+				if (mCard.getType().getAid().length>0){
+					aid = mCard.getType().getAid()[0];
+				}
+				if (AndroidCommonsUtils.isNotEmpty(aid)) {
+					createRaw(getString(R.string.extended_title_AID), CardUtils.formatAid(aid));
+				}
+
+				Application application = null;
+				if (mCard.getApplications().size()>0) {
+					application = mCard.getApplications().get(0);
 				}
 
 				// Card Application label
-				if (AndroidCommonsUtils.isNotEmpty(mCard.getApplicationLabel())) {
-					createRaw(getString(R.string.extended_title_application_label), mCard.getApplicationLabel());
+				String applicationLabel = null;
+				if (application!=null) {
+					applicationLabel = application.getApplicationLabel();
+				}
+				if (AndroidCommonsUtils.isNotEmpty(applicationLabel)) {
+					createRaw(getString(R.string.extended_title_application_label), applicationLabel);
 				}
 
 				// Card type
@@ -153,9 +168,15 @@ public class CardDetailFragment extends AbstractFragment {
 					createRaw(getString(R.string.extended_title_card_type), mCard.getType().getName());
 				}
 
-				// Pin try left
-				createRaw(getString(R.string.extended_title_pin_try), mCard.getLeftPinTry() + " "
-						+ getString(R.string.extended_title_times));
+				Integer leftPinTry = null;
+				if (application!=null) {
+					leftPinTry = application.getLeftPinTry();
+				}
+				if(leftPinTry!=null) {
+					// Pin try left
+					createRaw(getString(R.string.extended_title_pin_try), leftPinTry + " "
+							+ getString(R.string.extended_title_times));
+				}
 
 				// Atr desc
 				if (mCard.getAtrDescription() != null && !mCard.getAtrDescription().isEmpty()) {

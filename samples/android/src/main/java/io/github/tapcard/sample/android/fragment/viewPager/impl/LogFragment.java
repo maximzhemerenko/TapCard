@@ -13,16 +13,15 @@ import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import fr.devnied.bitlib.BytesUtils;
 import io.github.tapcard.sample.android.R;
-import io.github.tapcard.emvnfccard.model.EmvCard;
+import com.github.devnied.emvnfccard.model.EmvCard;
 import io.github.tapcard.sample.android.activity.HomeActivity;
 import io.github.tapcard.sample.android.fragment.viewPager.AbstractFragment;
 import io.github.tapcard.sample.android.fragment.viewPager.IFragment;
 import io.github.tapcard.sample.android.utils.CroutonUtils;
 import io.github.tapcard.sample.android.utils.CroutonUtils.CoutonColor;
 import io.github.tapcard.sample.android.view.FloatingActionButton;
-
-import io.github.tapcard.emvnfccard.utils.BytesUtils;
 
 /**
  * View pager fragment used to display card log
